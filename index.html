@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Obj detection toolset by gherardovarando</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Obj detection toolset</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/gherardovarando/obj_detection_toolset" class="btn">View on GitHub</a>
+      <a href="https://github.com/gherardovarando/obj_detection_toolset/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/gherardovarando/obj_detection_toolset/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="obj_detection_toolest" class="anchor" href="#obj_detection_toolest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>obj_detection_toolest</h1>
+
+<h3>
+<a id="author-gherardo-varando-gherardovarandogmailcom" class="anchor" href="#author-gherardo-varando-gherardovarandogmailcom" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>author: Gherardo Varando (<a href="mailto:gherardo.varando@gmail.com">gherardo.varando@gmail.com</a>)</h3>
+
+<p>The use of <strong>obj detection toolset</strong> require a basic knowledge of ImageJ/Fiji. Please refer to its online documentation for further explanations (<a href="http://imagej.net/Introduction">http://imagej.net/Introduction</a>).</p>
+
+<h2>
+<a id="dependencies-and-requirements" class="anchor" href="#dependencies-and-requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies and Requirements</h2>
+
+<p><strong>obj detection toolset</strong> is an extension for ImageJ, so obviously a version of ImageJ is required. It is recommend to install FIJI [2], which, citing its website, is a “batteries-included” distribution of ImageJ, bundling a lot of plugins which facilitate scientific image analysis. Moreover, <strong>obj detection toolset</strong> require two plugins that are not available through the ImageJ updater and have to be manually installed. That is to simply drag-and-drop the .jar files in the plugin directory of the ImageJ installation[3]. Both plugins, ObjCounter and MaxLoGs filter, are available through github:</p>
+
+<ul>
+<li><p>ObjCounter <a href="http://gherardovarando.github.io/ObjCounter/">http://gherardovarando.github.io/ObjCounter/</a>.</p></li>
+<li><p>MaxLoGs filter <a href="https://gherardovarando.github.io/MaxLoGs/">https://gherardovarando.github.io/MaxLoGs/</a>.</p></li>
+</ul>
+
+<p>The toolset and all the dependencies are tested with ImageJ 1.51g and Java 1.8 but they should be compatibles also with older versions of ImageJ running on Java 1.6.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p><strong>obj detection toolset</strong> is distributed as an imageJ custom toolset, that is a set of macros accessible via buttons in the tool bar [4]. To download the toolset files clone or download the entire repository:</p>
+
+<p>To install the toolset copy the <code>obj_detection_toolest.ijm</code> file in the <a href="ImageJ/macros/toolsets/">ImageJ/macros/toolsets/</a> directory and the folder <code>obj_detection</code> in the plugin directory. After restarting ImageJ the toolset can be made visible with the <code>More Tools Menu</code> (usually on the right of the ImageJ interface). The toolset actions are also available through the <strong>Plugins –&gt; obj detection</strong> menu.</p>
+
+<h2>
+<a id="first-run" class="anchor" href="#first-run" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>First run</h2>
+
+<p>After the installation open ImageJ/FIJI and click the <code>More Tools Menu</code> <img src="images/Switcher.png" alt="image"> and select <code>obj detection toolset</code>. Now you can access the toolset buttons in the ImageJ tool bar <img src="images/toolset.png" alt="image">.</p>
+
+<p>You can now open an image or a stack and count objects. If you have FIJI installed you can open the <code>blob</code> sample image in <strong>File –&gt; Open Samples</strong>. Then click in the first button of the toolset <img src="images/btn1.png" alt="image"> for detection and counting of the objects in the image. You can try (see Fig [fig:parameter]) different choices for the parameters of the algorithm (e.g. <strong>Rmin=1, Rmax=4, By=1, ThrMethod=Moments, Min=0 ,Max=0, Toll=0</strong> and if you are using a stack <strong>Fraction=0.45</strong>).</p>
+
+<p><img src="images/parameter.png" alt='Parameter choice menu for **obj detection image**&lt;span data-label="fig:parameter"&gt;&lt;/span&gt;'></p>
+
+<p>While the algorithm is running the various operations will be shown in the ImageJ status bar, and when the algorithm is tagging and counting the objects a text window with the results will appear with the output of the ongoing operations. When the algorithm finish all the operations the outputs will appear. See Section [sec:basic] for an extensive guide to the toolset capabilities.</p>
+
+<h1>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h1>
+
+<p>As explained in the ObjCounter plugin help page [5] it is better to change some Java configuration parameter to avoid thread stack overflow due to recursive calls. Java options are defined in the <code>ImageJ.cfg</code> file in the main directory of your ImageJ installation (see ImageJ help [6] on example of Java configurations for ImageJ ). The thread stack size can be changed with the option (-XssSIZE) where (SIZE) is the desired size of the thread stack. Refer to Oracle documentation for a complete explanation of the Java options[7] [8].</p>
+
+<h1>
+<a id="basic-use" class="anchor" href="#basic-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic use</h1>
+
+<p>In this section we explain the basic usage of the toolset.</p>
+
+<h2>
+<a id="object-detection" class="anchor" href="#object-detection" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Object detection</h2>
+
+<p>The object detection work-flow can be accessed with the relative button <img src="images/btn1.png" alt="image"> once the <strong>obj detection toolset</strong> is active or with the <strong>Plugins –&gt; obj detection –&gt; obj detection image</strong> menu entry. The user is asked for the following set of parameters (Fig. [fig:parameter] and Fig. [fig:guiDetection_1]):</p>
+
+<p><img src="images/guiDetection_1.png" alt='Parameter selection in **obj detection image**&lt;span data-label="fig:guiDetection_1"&gt;&lt;/span&gt;'></p>
+
+<ul>
+<li><p><strong>Rmin</strong> (Integer) approximately the radius (px) of the smallest object to detect</p></li>
+<li><p><strong>Rmax</strong> (Integer) approximately the radius (px) of the biggest object to detect</p></li>
+<li><p><strong>By</strong> (Integer) parameter used to set the granularity of the search.</p></li>
+<li><p><strong>ThrMethod</strong> (String) name of the threshold method used (like <code>Intermodes, IsoData, Moments</code>,…all the method available in ImageJ).</p></li>
+<li><p><strong>Min</strong> (Integer) minimum object volume (px).</p></li>
+<li><p><strong>Max</strong> (Integer) maximum object volume (px).</p></li>
+<li><p><strong>Fraction</strong> (Decimal) parameter to control the amount of connections among different slices.</p></li>
+<li><p><strong>Toll</strong> (Integer) tolerance for object tag propagation.</p></li>
+</ul>
+
+<p>An image is needed to be able to run the algorithm, otherwise a warning message is shown. The image is considered to represent bright object on a dark background, that is objects have in general higher pixels values than background.</p>
+
+<p><img src="images/schema.png" alt='Schematic of the object detection workflow&lt;span data-label="fig:schema"&gt;&lt;/span&gt;'></p>
+
+<p>The work-flow follows these steps (a schematic is shown in Fig. [fig:schema]):</p>
+
+<ol>
+<li><p>MaxLoGs filter of the original image with parameters <strong>Rmin,Rmax,By</strong>.</p></li>
+<li><p>Segmentation of the MaxLoGs filter with an automatic threshold method (<strong>ThrMethod</strong>) in foreground and background pixels.</p></li>
+<li><p>Denoising of the original image with a two-scale median filter.</p></li>
+<li><p>Retaining of the foreground pixels.</p></li>
+<li><p>Object tagging with ObjCounter plugin using parameter <strong>Min, Max, Fraction, Toll</strong>.</p></li>
+</ol>
+
+<p><img src="images/guiDetection_2.png" alt='Output of **obj detection image**&lt;span data-label="fig:guiDetection_2"&gt;&lt;/span&gt;'></p>
+
+<p>When the algorithm finishes the operations the results are shown (Fig. [fig:guiDetection_2]). In particular four more windows will open:</p>
+
+<ul>
+<li><p><strong>Objects_title</strong> shows the detected objects. Every object is marked with a number on all its pixels[9] and visually by different colors.</p></li>
+<li><p><strong>segmented_title</strong> is the results of the segmentation procedure, that is all the detected background is set to 0.</p></li>
+<li><p><strong>Centroids</strong> shows a table with the coordinates of the centroids.</p></li>
+<li><p><strong>Log</strong> shows the total number of objects counted and eventually the results of the validations.</p></li>
+</ul>
+
+<h2>
+<a id="validation-with-overlay" class="anchor" href="#validation-with-overlay" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Validation with overlay</h2>
+
+<p>If in the image an overlay[10] is present (See Fig. [fig:overlay]) the ObjCounter algorithm will try to validate the object detections comparing it with the overlay. The overlay should be composed by points indicating approximately the center of the objects, thus one point for every object should be present[11]. If a polygon or square selection is present in the overlay the validation will be restricted to the selected region. The result of the validation is shown in the <code>log</code> text window and it reports the number of points of the overlay, the number of objects detected by the algorithm, the <code>precision</code>, <code>recall</code> and <code>F1 measure</code>[12].</p>
+
+<p><img src="images/overlay.png" alt='Example of overlay for validation in `blobs.gif` sample image&lt;span data-label="fig:overlay"&gt;&lt;/span&gt;'></p>
+
+<h2>
+<a id="batch-processing" class="anchor" href="#batch-processing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Batch processing</h2>
+
+<p>The toolset offers the possibilities of batch processing large number of images with the <strong>Plugins –&gt; obj detection –&gt; obj detection folder</strong> command or with the respective button <img src="images/folderbtn.png" alt="image">. All the images (and nothing more) have to be placed in a single folder, the user is then asked to select the parameters as in the <strong>obj detection image</strong> and additionally:</p>
+
+<ul>
+<li><p><strong>Input directory</strong> the directory were the original images are stored.</p></li>
+<li><p><strong>Points output directory</strong> the directory were the <code>csv</code> files with the centroids of the objects detected will be stored.</p></li>
+<li><p><strong>Objects output directory</strong> the directory were the <code>tiff</code> files with the segmented objects will be stored.</p></li>
+</ul>
+
+<p>In the output folders the algorithm will write the output files as soon as they have been computed, working one image at a time. ImageJ will be unavailable for additional operations until the end of the process.</p>
+
+<h1>
+<a id="faq" class="anchor" href="#faq" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>FAQ</h1>
+
+<ul>
+<li><p><strong>The algorithm does not work, the objects are wrongly detected, how can I fix it?</strong> The parameters <strong>Rmin</strong> and <strong>Rmax</strong> are crucial so try to adjust them. Try to manually segment some objects and compute Feret diameters[13].</p></li>
+<li><p><strong>The object are correctly detected in every slice but are over/under connected in the z dimension, what can I do?</strong> Change the <strong>Fraction</strong> parameter, since it controls the “amount of connections between different slices”.</p></li>
+<li><p><strong>My images are very noisy and the algorithm detect noise as objects, is there a solution?</strong> The segmentation parts embeds a denoising element, you should probably consider to set larger values for the <strong>Rmin</strong> parameter, the values should be grater then the “size” of the noise. Another solution is to set larger values for the <strong>Min</strong> parameter, but you should not rely on the elimination of small objects to eliminate all the noise. The images are also filtered with a two-scale median filter after the segmentation but maybe you should consider to apply a custom filter beforehand.</p></li>
+<li><p><strong>I have tried everything, but the algorithm does not detect the objects in my image correctly, what can I do now?</strong> Probably our toolset is not suited for your case, we are assuming that the objects are bright blobs in a black background and that intensity is the only information available. If your objects are recognized by humans because of some prior informations the algorithm will not work, do not expect <strong>obj detection toolset</strong> to count people in an image of a crowd (but you can count stars in images of the sky[14]!! ).</p></li>
+<li><p><strong>What if I want to partially change the algorithm to suit better my case?</strong> It is very easy provided you know at least some ImageJ macro programming (<a href="http://imagej.net/Introduction_into_Macro_Programming#Installing_macros">http://imagej.net/Introduction_into_Macro_Programming#Installing_macros</a> and <a href="https://imagej.nih.gov/ij/developer/macro/functions.html">https://imagej.nih.gov/ij/developer/macro/functions.html</a>). The scripts defining the various actions can be found in the <code>obj_detection</code> folder. They are written in the ImageJ Macro language exactly with the purpose to be easily modifiable by an average user.</p></li>
+<li><p><strong>Can I modify the source code of the toolset and the related plugins ObjCounter and MaxLoGs ?</strong> Yes, sure all the source code is available on github[15] and it is released under GPL3. See the License section at the end of this document for details. In general ImageJ, FIJI and related ecosystem are open source, different licenses may apply. Please have a look at the ImageJ licensing page[16].</p></li>
+<li><p><strong>In FIJI there is already a plugin called 3D Objects Counter, which are the differences?</strong> 3D Objects Counter[17] by Fabrice P. Cordelieres was the starting point for coding our plugin ObjCounter[18]. ObjCounter has some computations improvement and it is more flexible[19] with respect to 3D Objects Counter but lacks some of the options of this last one. Please refer to ObjCounter page[20] for further comparisons.</p></li>
+<li><p><strong>I found a bug/error/strange behavior</strong> Please let us know[21]!! We hope to correct the bug and improve the toolset.</p></li>
+</ul>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
+
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU General Public License along with this program. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+
+<p>[1] originally developed for the study of 3D stacks of confocal microscopy</p>
+
+<p>[2] <a href="http://fiji.sc/">http://fiji.sc/</a></p>
+
+<p>[3] <a href="http://imagej.net/Installing_3rd_party_plugins">http://imagej.net/Installing_3rd_party_plugins</a></p>
+
+<p>[4] <a href="https://imagej.nih.gov/ij/docs/guide/146-20.html">https://imagej.nih.gov/ij/docs/guide/146-20.html</a></p>
+
+<p>[5] <a href="http://gherardovarando.github.io/ObjCounter/">http://gherardovarando.github.io/ObjCounter/</a></p>
+
+<p>[6] <a href="http://imagejdocu.tudor.lu/doku.php?id=faq:technical:how_do_i_increase_the_memory_in_imagej">http://imagejdocu.tudor.lu/doku.php?id=faq:technical:how_do_i_increase_the_memory_in_imagej</a></p>
+
+<p>[7] windows: <a href="http://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html">http://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html</a></p>
+
+<p>[8] unix: <a href="http://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html">http://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html</a></p>
+
+<p>[9] It is possible to read the number in ImageJ status bar pointing the cursor over the object.</p>
+
+<p>[10] <a href="https://imagej.nih.gov/ij/docs/guide/146-11.html">https://imagej.nih.gov/ij/docs/guide/146-11.html</a></p>
+
+<p>[11] Be careful in multi slice stack of images, in this case even if an object span through different slices there must be just one point in one of the slices</p>
+
+<p>[12] <a href="https://en.wikipedia.org/wiki/Precision_and_recall">https://en.wikipedia.org/wiki/Precision_and_recall</a></p>
+
+<p>[13] You can use <code>freehand selections and then Analyze –&gt; Measure</code></p>
+
+<p>[14] Tested with “The Starry Skies at Wildcat Mountain State Park, Wisconsin” available at <a href="https://www.goodfreephotos.com/united-states/wisconsin/wildcat-mountain-state-park/wisconsin-wildcat-mountain-state-park-the-starry-skies.jpg.php"> https://www.goodfreephotos.com/united-states/wisconsin/wildcat-mountain-state-park/wisconsin-wildcat-mountain-state-park-the-starry-skies.jpg.php</a></p>
+
+<p>[15]</p>
+
+<p>[16] <a href="http://imagej.net/Licensing">http://imagej.net/Licensing</a></p>
+
+<p>[17] <a href="http://imagej.net/3D_Objects_Counter">http://imagej.net/3D_Objects_Counter</a></p>
+
+<p>[18] The present verison of ObjCounter retain little code from the 3D Object Counter source code</p>
+
+<p>[19] ObjCounter is able to split objects based on the intensity variations, while 3D Objects Counter simply connects all the adjacent pixels and</p>
+
+<p>[20] <a href="http://gherardovarando.github.io/ObjCounter/">http://gherardovarando.github.io/ObjCounter/</a></p>
+
+<p>[21] <a href="mailto:gherardo.varando@upm.es">gherardo.varando@upm.es</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/gherardovarando/obj_detection_toolset">Obj detection toolset</a> is maintained by <a href="https://github.com/gherardovarando">gherardovarando</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
