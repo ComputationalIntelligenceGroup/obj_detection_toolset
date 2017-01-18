@@ -2,6 +2,10 @@
 // @Integer(label="Radius of median filter") radius
 // @ImagePlus img
 
+Dialog.create("Title")
+Dialog.addNumber("Radius of median filter",10);
+Dialog.show();
+radius = Dialog.getNumber()
 
 setBatchMode(true);
 width=getWidth();

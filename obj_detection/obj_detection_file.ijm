@@ -53,7 +53,7 @@ depth=(nslice+1)/2;
 //setVoxelSize(sX,sY,sZ,"micron");
 //segmentation and object counting
 rename(titleOriginal);
-run("ObjCounter",  "threshold=1 slice="+floor(depth)+" min. ="+min+" max.="+max +" fraction="+fraction+" tollerance="+toll+" objects export_points");
+run("ObjCounter",  "threshold=1 slice="+floor(depth)+" min. ="+min+" max.="+max +" fraction="+fraction+" tollerance="+toll+" objects export_points validation");
 save(outFolderO+"/objects_"+titleOriginal);
 close();
 saveAs("Results", outFolderP + "/points_"+titleOriginal+".csv");
