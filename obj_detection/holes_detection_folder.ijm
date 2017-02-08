@@ -1,6 +1,5 @@
 // @Integer(value=255) thrHoles
 // @Integer(label="Radius of median filter") radius
-// @ImagePlus img
 // @File(label="Select the input directory", style="directory") imagesDir
 // @File(label="Select an output directory for the holes img", style="directory") outFolderH
 // @File(label="Select an output directory for the holes csv", style="directory") outFolderHcsv
@@ -38,8 +37,7 @@ for (i = 0; i < list.length; i++){
    run("Macro...", "code=[if (v==255) v=1] stack");
    run("Z Project...", "projection=[Sum Slices]");
    run("8-bit");
-   saveAs("Text Image", dirHoles+"/holes_"+titleC);
-   rename("holes_"+title);
+   rename("holes_"+titleC);
    save(outFolderH + "/holes_"+titleC);
    saveAs("Text Image", outFolderHcsv+"/holes_"+titleC);
    close("*");
