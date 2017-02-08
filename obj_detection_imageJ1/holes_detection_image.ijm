@@ -1,15 +1,16 @@
-// @Integer(value=255) thrHoles
-// @Integer(label="Radius of median filter") radius
-// @ImagePlus img
 
+Dialog.create("Title")
+Dialog.addNumber("Radius of median filter",10);
+Dialog.show();
+radius = Dialog.getNumber()
 
 setBatchMode(true);
+run("Conversions...", " "); //avoid scaling when converting
 width=getWidth();
 height=getHeight();
 nslice=nSlices();
 title=getTitle();
 
-run("Conversions...", " "); //avoid scaling when converting
 run("Duplicate...", "duplicate range="+1+"-"+nslice+" title=temp1");
 selectWindow("temp1");
 run("Macro...", "code=v=-v+255 stack"); //invert intnsity
