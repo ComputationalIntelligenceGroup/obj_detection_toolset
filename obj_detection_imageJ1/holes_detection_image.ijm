@@ -1,7 +1,10 @@
-// @Integer(value=255) thrHoles
-// @Integer(label="Radius of median filter") radius
-// @ImagePlus img
 
+Dialog.create("Title")
+Dialog.addNumber("Radius of median filter",10);
+Dialog.addNumber("Threshold",250);
+Dialog.show();
+radius = Dialog.getNumber()
+thrHoles = Dialog.getNumber();
 
 setBatchMode(true);
 width=getWidth();
