@@ -67,12 +67,12 @@
                 alt="image">.</p>
 
         <p>You can now open an image or a stack and count objects. If you have FIJI installed you can open the <code>blob</code> sample image in <strong>File –&gt; Open Samples</strong>. Then click in the first button of the toolset <img src="images/btn1.png"
-                alt="image"> for detection and counting of the objects in the image. You can try (see Fig [fig:parameter]) different choices for the parameters of the algorithm (e.g. <strong>Rmin=1, Rmax=4, By=1, ThrMethod=Moments, Min=0 ,Max=0, Toll=0</strong>            and if you are using a stack <strong>Fraction=0.45</strong>).</p>
+                alt="image"> for detection and counting of the objects in the image. You can try  different choices for the parameters of the algorithm (e.g. <strong>Rmin=1, Rmax=4, By=1, ThrMethod=Moments, Min=0 ,Max=0, Toll=0</strong>            and if you are using a stack <strong>Fraction=0.45</strong>).</p>
 
         <p><img src="images/parameter.png" alt='Parameter choice menu for **obj detection image**&lt;span data-label="fig:parameter"&gt;&lt;/span&gt;'></p>
 
         <p>While the algorithm is running the various operations will be shown in the ImageJ status bar, and when the algorithm is tagging and counting the objects a text window with the results will appear with the output of the ongoing operations. When
-            the algorithm finish all the operations the outputs will appear. See Section [sec:basic] for an extensive guide to the toolset capabilities.</p>
+            the algorithm finish all the operations the outputs will appear.</p>
 
         <h1>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h1>
@@ -89,7 +89,7 @@
         <h2>
 <a id="object-detection" class="anchor" href="#object-detection" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Object detection</h2>
 
-        <p>The object detection work-flow can be accessed with the relative button <img src="images/btn1.png" alt="image"> once the <strong>obj detection toolset</strong> is active or with the <strong>Plugins –&gt; obj detection –&gt; obj detection image</strong>            menu entry. The user is asked for the following set of parameters (Fig. [fig:parameter] and Fig. [fig:guiDetection_1]):</p>
+        <p>The object detection work-flow can be accessed with the relative button <img src="images/btn1.png" alt="image"> once the <strong>obj detection toolset</strong> is active or with the <strong>Plugins –&gt; obj detection –&gt; obj detection image</strong>            menu entry. The user is asked for the following set of parameters:</p>
 
         <p><img src="images/guiDetection_1.png" alt='Parameter selection in **obj detection image**&lt;span data-label="fig:guiDetection_1"&gt;&lt;/span&gt;'></p>
 
@@ -124,7 +124,6 @@
 
         <p><img src="images/schema.png" alt='Schematic of the object detection workflow&lt;span data-label="fig:schema"&gt;&lt;/span&gt;'></p>
 
-        <p>The work-flow follows these steps (a schematic is shown in Fig. [fig:schema]):</p>
 
         <ol>
             <li>
@@ -146,7 +145,7 @@
 
         <p><img src="images/guiDetection_2.png" alt='Output of **obj detection image**&lt;span data-label="fig:guiDetection_2"&gt;&lt;/span&gt;'></p>
 
-        <p>When the algorithm finishes the operations the results are shown (Fig. [fig:guiDetection_2]). In particular four more windows will open:</p>
+        <p>When the algorithm finishes the operations the results are shown. In particular four more windows will open:</p>
 
         <ul>
             <li>
@@ -166,7 +165,7 @@
         <h2>
 <a id="validation-with-overlay" class="anchor" href="#validation-with-overlay" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Validation with overlay</h2>
 
-        <p>If in the image an  <a href="https://imagej.nih.gov/ij/docs/guide/146-11.html">overlay</a> is present (See Fig. [fig:overlay]) the ObjCounter algorithm will try to validate the object detections comparing it with the overlay. The overlay should be composed by points indicating approximately the center
+        <p>If in the image an  <a href="https://imagej.nih.gov/ij/docs/guide/146-11.html">overlay</a> is present the ObjCounter algorithm will try to validate the object detections comparing it with the overlay. The overlay should be composed by points indicating approximately the center
             of the objects, thus one point for every object should be present (Be careful in multi slice stack of images, in this case even if an object span through different slices there must be just one point in one of the slices). If a polygon or square selection is present in the overlay the validation will be restricted to the selected region. The result of the validation is shown in the <code>log</code>            text window and it reports the number of points of the overlay, the number of objects detected by the algorithm, the <code>precision</code>, <code>recall</code> and <code>F1 measure</code> (<a href="https://en.wikipedia.org/wiki/Precision_and_recall">https://en.wikipedia.org/wiki/Precision_and_recall</a>).</p>
 
         <p><img src="images/overlay.png" alt='Example of overlay for validation in `blobs.gif` sample image&lt;span data-label="fig:overlay"&gt;&lt;/span&gt;'></p>
@@ -221,7 +220,7 @@
                     this document for details. In general ImageJ, FIJI and related ecosystem are open source, different licenses may apply. Please have a look at the ImageJ licensing page <a href="http://imagej.net/Licensing">http://imagej.net/Licensing</a>.</p>
             </li>
             <li>
-                <p><strong>In FIJI there is already a plugin called 3D Objects Counter, which are the differences?</strong> <a href="http://imagej.net/3D_Objects_Counter">3D Objects Counter</a> by Fabrice P. Cordelieres was the starting point for coding our plugin ObjCounter[18]. ObjCounter has some
+                <p><strong>In FIJI there is already a plugin called 3D Objects Counter, which are the differences?</strong> <a href="http://imagej.net/3D_Objects_Counter">3D Objects Counter</a> by Fabrice P. Cordelieres was the starting point for coding our plugin ObjCounter. ObjCounter has some
                     computations improvement and it is more flexible with respect to 3D Objects Counter but lacks some of the options of this last one.</p>
             </li>
             <li>
