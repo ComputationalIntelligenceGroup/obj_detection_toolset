@@ -34,7 +34,9 @@ for (i = 0; i < list.length; i++){
    //run("Minimum...", "radius=15 stack");
    //run("Maximum...", "radius=15 stack");
    selectWindow("temp1");
-   run("Z Project...", "projection=[Sum Slices]");
+   if (nslice>1){
+     run("Z Project...", "projection=[Sum Slices]");
+   }
    run("8-bit");
    rename("holes_"+titleC);
    save(outFolderH + "/holes_"+titleC);
