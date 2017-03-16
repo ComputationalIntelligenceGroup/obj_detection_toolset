@@ -12,9 +12,9 @@ Dependencies and Requirements
 
 **obj detection toolset** is an extension for ImageJ, so obviously a version of ImageJ is required. It is recommend to install FIJI [2], which, citing its website, is a “batteries-included” distribution of ImageJ, bundling a lot of plugins which facilitate scientific image analysis. Moreover, **obj detection toolset** require two plugins that are not available through the ImageJ updater and have to be manually installed. That is to simply drag-and-drop the .jar files in the plugin directory of the ImageJ installation[3]. Both plugins, ObjCounter and MaxLoGs filter, are available through github:
 
--   ObjCounter <http://gherardovarando.github.io/ObjCounter/>.
+-   ObjCounter <http://computationalintelligencegroup.github.io/ObjCounter/>.
 
--   MaxLoGs filter <https://gherardovarando.github.io/MaxLoGs/>.
+-   MaxLoGs filter <https://computationalintelligencegroup.github.io/MaxLoGs/>.
 
 The toolset and all the dependencies are tested with ImageJ 1.51g and Java 1.8 but they should be compatibles also with older versions of ImageJ running on Java 1.6.
 
