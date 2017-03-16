@@ -49,6 +49,6 @@ depth=(nslice+1)/2;
 //setVoxelSize(sX,sY,sZ,"micron");
 //segmentation and object counting
 rename("segmented_"+titleOriginal);
-run("ObjCounter",  "threshold=1 slice="+floor(depth)+" min ="+min+" max="+max +" fraction="+fraction+" tollerance="+toll+" objects export_points validation");
+run("ObjCounter",  "threshold=1 slice="+floor(depth)+" min="+min+" max="+max +" fraction="+fraction+" tollerance="+toll+" objects export_points validation");
 close("max");
 setBatchMode("exit and display");
