@@ -12,18 +12,18 @@ Dependencies and Requirements
 
 **obj detection toolset** is an extension for ImageJ, so obviously a version of ImageJ is required. It is recommend to install FIJI [2], which, citing its website, is a “batteries-included” distribution of ImageJ, bundling a lot of plugins which facilitate scientific image analysis. Moreover, **obj detection toolset** require two plugins that are not available through the ImageJ updater and have to be manually installed. That is to simply drag-and-drop the .jar files in the plugin directory of the ImageJ installation[3]. Both plugins, ObjCounter and MaxLoGs filter, are available through github:
 
--   ObjCounter <http://computationalintelligencegroup.github.io/ObjCounter/>.
+-   ObjCounter <https://github.com/ComputationalIntelligenceGroup/ObjCounter/releases> version>= 1.0.0 needed .
 
--   MaxLoGs filter <https://computationalintelligencegroup.github.io/MaxLoGs/>.
+-   MaxLoGs filter <https://github.com/ComputationalIntelligenceGroup/MaxLoGs/releases>.
 
-The toolset and all the dependencies are tested with ImageJ 1.51g and Java 1.8 but they should be compatibles also with older versions of ImageJ running on Java 1.6.
+The toolset and all the dependencies are tested with ImageJ2 or ImageJ 1.51g and Java 1.8 but they should be compatibles also with older versions of ImageJ running on Java 1.6.
 
 Installation
 ------------
 
-**obj detection toolset** is distributed as an imageJ custom toolset, that is a set of macros accessible via buttons in the tool bar [4]. To download the toolset files clone or download the entire repository:
+**obj detection toolset** is distributed as an imageJ custom toolset, that is a set of macros accessible via buttons in the tool bar [4]. To download the toolset files clone or [download](https://github.com/ComputationalIntelligenceGroup/obj_detection_toolset/archive/master.zip) the entire repository :
 
-To install the toolset copy the `obj_detection_toolest.ijm` file in the [ImageJ/macros/toolsets/](ImageJ/macros/toolsets/) directory and the folder `obj_detection` in the plugin directory. After restarting ImageJ the toolset can be made visible with the `More Tools Menu` (usually on the right of the ImageJ interface). The toolset actions are also available through the **Plugins –&gt; obj detection** menu.
+To install the toolset copy the `obj_detection_toolest.ijm` file in the `ImageJ/macros/toolsets/` directory and the folder `obj_detection` (or `obj_detection_imageJ1` if you are using ImageJ1) in the plugin directory. After restarting ImageJ the toolset can be made visible with the `More Tools Menu` (usually on the right of the ImageJ interface). The toolset actions are also available through the **Plugins –&gt; obj detection** menu.
 
 First run
 ---------
