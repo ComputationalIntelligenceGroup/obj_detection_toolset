@@ -57,10 +57,9 @@ for (i = 0; i < list.length; i++){
    //setVoxelSize(sX,sY,sZ,"micron");
    //segmentation and object counting
    rename(titleOriginal);
-   run("ObjCounter",  "threshold=1 slice="+floor(depth)+" min="+min+" max="+max +" fraction="+fraction+" tollerance="+toll+" objects export_points");
-   save(outFolderO+"/objects_"+titleOriginal);
-   close();
-   saveAs("Results", outFolderP + "/points_"+titleOriginal+".csv");
+   fileO = outFolderO+"/objects_"+titleOriginal;
+   fileP = outFolderP+"/centroids_"+titleOriginal+".csv";
+   run("ObjCounter",  "threshold=1 slice="+floor(depth)+" min="+min+" max="+max +" fraction="+fraction+" tolerance="+toll+" validate=true" + " output_objects="+ fileO + " output_points="+fileP);
    close("*");
  }
 }
